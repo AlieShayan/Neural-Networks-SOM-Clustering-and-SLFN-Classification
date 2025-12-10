@@ -2,6 +2,14 @@
 
 This repository contains implementations of **Self-Organizing Maps (SOM)** for clustering and classification, along with a **Single Layer Feedforward Network (SLFN)** built entirely from scratch. The project demonstrates unsupervised and supervised learning techniques applied to real-world datasets.
 
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-blue?logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-blue?logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-blue?logo=matplotlib&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/scikit--learn-orange?logo=scikit-learn&logoColor=white)
+![MiniSom](https://img.shields.io/badge/MiniSom-Library-green)
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -51,6 +59,7 @@ Both implementations are built from scratch without using high-level machine lea
 - **Jupyter Notebook**: Interactive development environment
 
 ## 📁 Project Structure
+```
 ├── README.md
 ├── task1_som_clustering
 │   ├── images
@@ -77,61 +86,53 @@ Both implementations are built from scratch without using high-level machine lea
     │   └── slfn_roc_curve.png
     ├── slfn_titanic.ipynb
     └── titanic.csv
-
+```
 
 ## 🚀 Installation
 
 1. **Clone the repository**:
-git clone https://github.com/AlieShayan/Neural-Networks-SOM-Clustering-and-SLFN-Classification.git
-cd Neural-Networks-SOM-Clustering-and-SLFN-Classification
+    ```bash
+    git clone https://github.com/AlieShayan/Neural-Networks-SOM-Clustering-and-SLFN-Classification.git
+    cd Neural-Networks-SOM-Clustering-and-SLFN-Classification
+    ```
 
 
 2. **Create a virtual environment** (recommended):
-python -m venv venv
-source venv/bin/activate # On Windows: venv\Scripts\activate
+    ```bash
+    python -m venv venv
+    source venv/bin/activate # On Windows: venv\Scripts\activate
+    ```
 
 
 3. **Install dependencies**:
-pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 
 4. **Launch Jupyter Notebook**:
-jupyter notebook
+    ```bash
+    jupyter notebook
+    ```
 
+## 📊 Key Analyses & Visualizations
 
-## 💻 Usage
+This project is structured into three main analysis tasks:
 
-### Self-Organizing Maps (SOM)
+* **SOM Clustering (`task1_som_clustering`):**
+    * **Objective:** Cluster the sklearn handwritten digits dataset using unsupervised learning.
+    * **Technique:** Implements a Self-Organizing Map (SOM) to map high-dimensional data (64 features) onto a 2D grid.
+    * **Visualizations:** Generates **Hit Maps** to show neuron activation frequencies and sample grids to visualize the digits captured by specific neurons.
 
-from src.som import SelfOrganizingMap
+* **SOM Classification (`task2_som_classification`):**
+    * **Objective:** Utilize the topological properties of SOMs to perform classification on the digits dataset.
+    * **Technique:** Labels neurons based on the majority class of the training data mapped to them, then predicts classes for test data.
+    * **Visualizations:** Produces **Class Maps** and **Confusion Matrices** to evaluate classification performance across different grid sizes (e.g., 4x4 vs 20x20).
 
-Initialize SOM
-som = SelfOrganizingMap(input_dim=4, map_size=(10, 10), learning_rate=0.5)
-
-Train the network
-som.train(X_train, num_iterations=1000)
-
-Get cluster assignments
-clusters = som.predict(X_test)
-
-Visualize results
-som.plot_map()
-
-### Single Layer Feedforward Network (SLFN)
-
-from src.slfn import SLFN
-
-Initialize SLFN
-model = SLFN(input_size=4, hidden_size=10, output_size=3)
-
-Train the network
-model.fit(X_train, y_train, epochs=500, learning_rate=0.01)
-
-Make predictions
-predictions = model.predict(X_test)
-
-Evaluate performance
-accuracy = model.evaluate(X_test, y_test)
+* **SLFN Classification (`task3_slfn_titanic`):**
+    * **Objective:** Predict survival on the Titanic dataset.
+    * **Technique:** Implements a Single Layer Feedforward Network (SLFN) to process passenger data.
+    * **Visualizations:** Includes **Loss Curves** to track training progress and **ROC Curves** to analyze model sensitivity and specificity.
 
 
 ## 🔬 Methodology
